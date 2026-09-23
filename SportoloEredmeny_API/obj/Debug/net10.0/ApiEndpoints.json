@@ -1,0 +1,64 @@
+[
+  {
+    "ContainingType": "SportoloEredmeny_API.Controllers.EredmenyController",
+    "Method": "PostEredmeny",
+    "RelativePath": "api/Eredmeny",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eredmeny",
+        "Type": "SportoloEredmeny_API.Models.DTOs.AddEredmenyDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "SportoloEredmeny_API.Models.Eredmenyek",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SportoloEredmeny_API.Controllers.EredmenyController",
+    "Method": "GetAllPost",
+    "RelativePath": "api/Eredmeny/eredmeny",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[SportoloEredmeny_API.Models.Eredmenyek, SportoloEredmeny_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "SportoloEredmeny_API.Controllers.EredmenyController",
+    "Method": "GetEredmenyekById",
+    "RelativePath": "api/Eredmeny/eredmenybyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

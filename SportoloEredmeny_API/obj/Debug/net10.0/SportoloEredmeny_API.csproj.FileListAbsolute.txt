@@ -34,3 +34,4 @@ C:\Users\rizb\Desktop\2026_27\Backend\SportoloEredmeny_API\SportoloEredmeny_API\
 C:\Users\rizb\Desktop\2026_27\Backend\SportoloEredmeny_API\SportoloEredmeny_API\obj\Debug\net10.0\SportoloEredmeny_API.pdb
 C:\Users\rizb\Desktop\2026_27\Backend\SportoloEredmeny_API\SportoloEredmeny_API\obj\Debug\net10.0\SportoloEredmeny_API.genruntimeconfig.cache
 C:\Users\rizb\Desktop\2026_27\Backend\SportoloEredmeny_API\SportoloEredmeny_API\obj\Debug\net10.0\ref\SportoloEredmeny_API.dll
+C:\Users\rizb\Desktop\2026_27\Backend\SportoloEredmeny_API\SportoloEredmeny_API\obj\Debug\net10.0\SportoloEredmeny_API.sourcelink.json

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using SportoloEredmeny_API.Models;
+using SportoloEredmeny_API.Models.DTOs;
 
 namespace SportoloEredmeny_API.Controllers
 {
@@ -12,9 +13,9 @@ namespace SportoloEredmeny_API.Controllers
         private readonly string ConnectionString = "server=localhost;database=blog13b;uid=root;password=";
 
         [HttpGet("eredmeny")]
-        public List<EredmenyPost> GetAllPost()
+        public List<Eredmenyek> GetAllPost()
         {
-            List<EredmenyPost> eredmenyek = new();
+            List<Eredmenyek> eredmenyek = new();
 
             var connector = new MySqlConnection(ConnectionString);
 
@@ -27,7 +28,7 @@ namespace SportoloEredmeny_API.Controllers
             var dataReader = cmd.ExecuteReader();
             while (dataReader.Read())
             {
-                var eredmeny = new EredmenyPost
+                var e = new Eredmenyek
                 {
                     Id = dataReader.GetInt32(0),
                     Competition = dataReader.GetString(1),
@@ -37,7 +38,7 @@ namespace SportoloEredmeny_API.Controllers
                     SportoloId = dataReader.GetInt32(5),
                 };
 
-                eredmenyek.Add(eredmeny);
+                eredmenyek.Add(e);
             }
 
             connector.Close();
@@ -70,6 +71,40 @@ namespace SportoloEredmeny_API.Controllers
 
             return sportolo;
         }
+
+        [HttpPost]
+        public Eredmenyek PostEredmeny(AddEredmenyDTO eredmeny)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+
+            connector.Open();
+
+
+            var erdmny = new Eredmenyek
+            {
+                Competition = eredmeny.Competition,
+                Description = eredmeny.Description,
+                ResultTime = DateTime.Now,
+                UpdateTime = DateTime.Now
+
+            };
+
+            var sql = $"INSERT INTO `eredmeny`(`Competition`, `Description`, `ResultTime`, `UpdateTime`,) VALUES ('@competition','@description','@resulttime','@updatetime')";
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@competition", erdmny.Competition);
+            cmd.Parameters.AddWithValue("@description", erdmny.Description);
+            cmd.Parameters.AddWithValue("@resulttime", erdmny.ResultTime);
+            cmd.Parameters.AddWithValue("@updatetime", erdmny.UpdateTime);
+
+            cmd.ExecuteNonQuery();
+
+            connector.Close();
+
+            return erdmny;
+
+        }
+
+
 
     }
 }
