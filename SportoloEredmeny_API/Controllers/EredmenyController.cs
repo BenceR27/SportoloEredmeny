@@ -79,30 +79,30 @@ namespace SportoloEredmeny_API.Controllers
 
             connector.Open();
 
-
-            var erdmny = new Eredmenyek
+            var e = new Eredmenyek
             {
                 Competition = eredmeny.Competition,
                 Description = eredmeny.Description,
                 ResultTime = DateTime.Now,
                 UpdateTime = DateTime.Now,
                 SportoloId = eredmeny.SportoloId
-
             };
 
-            var sql = $"INSERT INTO `eredmeny`(`Competition`, `Description`, `ResultTime`, `UpdateTime`,`SportoloId`) VALUES ('@competition','@description','@resulttime','@updatetime','@sportoloid')";
+            var sql = $"INSERT INTO `eredmeny`(`Competition`, `Description`, `ResultTime`, `UpdateTime`, `SportoloId`) VALUES (@competition,@description,@resulttime,@updatetime,@sportoloid)";
+
             var cmd = new MySqlCommand(sql, connector);
-            cmd.Parameters.AddWithValue("@competition", erdmny.Competition);
-            cmd.Parameters.AddWithValue("@description", erdmny.Description);
-            cmd.Parameters.AddWithValue("@resulttime", erdmny.ResultTime);
-            cmd.Parameters.AddWithValue("@updatetime", erdmny.UpdateTime);
-            cmd.Parameters.AddWithValue("@sportoloid", erdmny.SportoloId);
+
+            cmd.Parameters.AddWithValue("@competition", e.Competition);
+            cmd.Parameters.AddWithValue("@description", e.Description);
+            cmd.Parameters.AddWithValue("@resulttime", e.ResultTime);
+            cmd.Parameters.AddWithValue("@updatetime", e.UpdateTime);
+            cmd.Parameters.AddWithValue("@sportoloid", e.SportoloId);
 
             cmd.ExecuteNonQuery();
 
             connector.Close();
 
-            return erdmny;
+            return e;
 
         }
 
