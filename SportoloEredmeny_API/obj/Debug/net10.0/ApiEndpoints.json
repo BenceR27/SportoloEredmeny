@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "SportoloEredmeny_API.Controllers.EredmenyController",
-    "Method": "PostEredmeny",
+    "Method": "AddUjEredmeny",
     "RelativePath": "api/Eredmeny",
     "HttpMethod": "POST",
     "IsController": true,

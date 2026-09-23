@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SportoloEredmeny_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+867efff99f546fe143aec6f495db6f5343aa12b8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae87eac37888f24e1289ab479ef6ad3bd5742bf0")]
 [assembly: System.Reflection.AssemblyProductAttribute("SportoloEredmeny_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SportoloEredmeny_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,7 +10,7 @@ namespace SportoloEredmeny_API.Controllers
     [ApiController]
     public class EredmenyController : ControllerBase
     {
-        private readonly string ConnectionString = "server=localhost;database=blog13b;uid=root;password=";
+        private readonly string ConnectionString = "server=localhost;database=sportolo13b;uid=root;password=";
 
         [HttpGet("eredmeny")]
         public List<Eredmenyek> GetAllPost()
@@ -21,7 +21,7 @@ namespace SportoloEredmeny_API.Controllers
 
             connector.Open();
 
-            string sql = "SELECT * FROM sportolo13b;";
+            string sql = "SELECT * FROM eredmeny;";
 
             var cmd = new MySqlCommand(sql, connector);
 
@@ -73,7 +73,7 @@ namespace SportoloEredmeny_API.Controllers
         }
 
         [HttpPost]
-        public Eredmenyek PostEredmeny(AddEredmenyDTO eredmeny)
+        public Eredmenyek AddUjEredmeny(AddEredmenyDTO eredmeny)
         {
             var connector = new MySqlConnection(ConnectionString);
 
@@ -85,16 +85,18 @@ namespace SportoloEredmeny_API.Controllers
                 Competition = eredmeny.Competition,
                 Description = eredmeny.Description,
                 ResultTime = DateTime.Now,
-                UpdateTime = DateTime.Now
+                UpdateTime = DateTime.Now,
+                SportoloId = eredmeny.SportoloId
 
             };
 
-            var sql = $"INSERT INTO `eredmeny`(`Competition`, `Description`, `ResultTime`, `UpdateTime`,) VALUES ('@competition','@description','@resulttime','@updatetime')";
+            var sql = $"INSERT INTO `eredmeny`(`Competition`, `Description`, `ResultTime`, `UpdateTime`,`SportoloId`) VALUES ('@competition','@description','@resulttime','@updatetime','@sportoloid')";
             var cmd = new MySqlCommand(sql, connector);
             cmd.Parameters.AddWithValue("@competition", erdmny.Competition);
             cmd.Parameters.AddWithValue("@description", erdmny.Description);
             cmd.Parameters.AddWithValue("@resulttime", erdmny.ResultTime);
             cmd.Parameters.AddWithValue("@updatetime", erdmny.UpdateTime);
+            cmd.Parameters.AddWithValue("@sportoloid", erdmny.SportoloId);
 
             cmd.ExecuteNonQuery();
 
