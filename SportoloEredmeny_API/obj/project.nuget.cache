@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "gI9bCxzOM9A=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rizb\\Desktop\\2026_27\\Backend\\SportoloEredmeny_API\\SportoloEredmeny_API\\SportoloEredmeny_API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rizb\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
+    "C:\\Users\\rizb\\.nuget\\packages\\microsoft.openapi\\2.12.0\\microsoft.openapi.2.12.0.nupkg.sha512",
+    "C:\\Users\\rizb\\.nuget\\packages\\mysqlconnector\\2.6.2\\mysqlconnector.2.6.2.nupkg.sha512",
+    "C:\\Users\\rizb\\.nuget\\packages\\scalar.aspnetcore\\2.17.8\\scalar.aspnetcore.2.17.8.nupkg.sha512"
+  ],
+  "logs": []
+}
