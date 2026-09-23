@@ -103,10 +103,25 @@ namespace SportoloEredmeny_API.Controllers
             connector.Close();
 
             return e;
-
         }
 
+        [HttpDelete]
+        public object deleteEredmeny(int id)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+            connector.Open();
+
+            var sql = @"DELETE FROM `eredmeny` WHERE `id` = @id;";
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            connector.Close();
+            return new { message = "Eredmény törölve!" };
 
 
+
+        }
     }
 }
