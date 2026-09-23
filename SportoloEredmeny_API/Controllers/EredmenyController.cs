@@ -63,8 +63,8 @@ namespace SportoloEredmeny_API.Controllers
             var sportolo = new
             {
                 Competiton = datareader.GetString(0),
-                ResultTime = datareader.GetString(1),
-                UpdateTime = datareader.GetString(2)
+                ResultTime = datareader.GetDateTime(1),
+                UpdateTime = datareader.GetDateTime(2)
             };
 
             connector.Close();
