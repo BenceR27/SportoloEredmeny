@@ -119,9 +119,61 @@ namespace SportoloEredmeny_API.Controllers
 
             connector.Close();
             return new { message = "Eredmény törölve!" };
+        }
 
+        [HttpPut]
 
+        public object UpdateEredmeny([FromQuery] int id, [FromBody] UpdateEredmenyekDTO updateEredmenyekDto)
+        {
+            var connector = new MySqlConnection(ConnectionString);
 
+            connector.Open();
+
+            string sql = @"UPDATE `eredmeny` SET `Competition`=@competition,`Description`=@description,`UpdateTime`=@updatetime
+                WHERE `id`= @id;";
+
+            var cmd = new MySqlCommand(sql, connector);
+
+            cmd.Parameters.AddWithValue("@competition", updateEredmenyekDto.Competition);
+            cmd.Parameters.AddWithValue("@description", updateEredmenyekDto.Description);
+            cmd.Parameters.AddWithValue("@updatetime", DateTime.Now);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            var updatedEredmeny = new UpdateEredmenyekDTO
+            {
+                Competition = updateEredmenyekDto.Competition,
+                Description = updateEredmenyekDto.Description
+            };
+
+            connector.Close();
+
+            return new { message = "Sikeres frissítés.", result = updatedEredmeny };
+        }
+
+        [HttpGet("sportolonameemail")]
+        public object GetSportoloNameEmail(int id)
+        {
+            var connector = new MySqlConnection(ConnectionString);
+            connector.Open();
+
+            var sql = @"SELECT `name`, `email` FROM `sportolo` 
+                        WHERE `id` = @id;";
+
+            var cmd = new MySqlCommand(sql, connector);
+            cmd.Parameters.AddWithValue("@id", id);
+            var datareader = cmd.ExecuteReader();
+            datareader.Read();
+            var sportolo = new
+
+            {
+                Name = datareader.GetString(0),
+                Email = datareader.GetString(1)
+            };
+
+            connector.Close();
+            return sportolo;
         }
     }
 }
